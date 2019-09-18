@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ImageBackground, View, Text } from 'react-native';
+import { StyleSheet, ImageBackground, View, Text, Button } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
 import Header from '../components/Header/Header';
@@ -13,7 +13,7 @@ export default function MainScreen(props) {
     <GestureRecognizer onSwipeLeft={() => navigate('RightScreen')}>
       <ImageBackground source={require('../assets/images/1.jpg')} style={styles.imageBackground}>
         <View style={styles.mainScreen}>
-          <Header name="Bjelašnica" />
+          <Header name="Bjelašnica" navigation={props.navigation} />
           <CurrentWeather name="Bjelašnica" />
           <DailyWeather />
           <BottomIndicator name="Jahorina" direction="forward" navigation={props.navigation} />

@@ -4,6 +4,7 @@ import * as Font from 'expo-font';
 import { StyleSheet, View, ImageBackground } from 'react-native';
 
 import MainNavigator from './navigation/MainNavigator';
+import DrawerNavigator from './navigation/DrawerNavigator';
 
 export default function App() {
   const [state, setState] = useState({
@@ -22,5 +23,5 @@ export default function App() {
     }).then(() => setState({ ...state, fontLoading: false }));
   }, []);
 
-  return !state.fontLoading && <MainNavigator />;
+  return !state.fontLoading && <DrawerNavigator />;
 }

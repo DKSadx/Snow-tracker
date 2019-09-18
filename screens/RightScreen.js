@@ -13,7 +13,7 @@ export default function MainScreen(props) {
     <GestureRecognizer onSwipeRight={() => navigate('MainScreen')}>
       <ImageBackground source={require('../assets/images/3.jpg')} style={styles.imageBackground}>
         <View style={styles.mainScreen}>
-          <Header name="Jahorina" />
+          <Header name="Jahorina" navigation={props.navigation} />
           <CurrentWeather name="Jahorina" />
           <DailyWeather />
           <BottomIndicator name="Bjelašnica" direction="back" navigation={props.navigation} />

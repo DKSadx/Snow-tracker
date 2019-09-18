@@ -1,13 +1,14 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
+import { DrawerActions } from 'react-navigation-drawer';
 
 export default function CurrentWeather(props) {
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
         <View style={styles.menuIcon}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}>
             <Entypo color="white" size={30} name="menu" />
           </TouchableOpacity>
         </View>
