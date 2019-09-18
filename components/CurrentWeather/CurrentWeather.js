@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 
-export default function CurrentWeather() {
+export default function CurrentWeather(props) {
   return (
     <View style={styles.currentWeather}>
       <View style={styles.weatherType}>
@@ -12,7 +12,7 @@ export default function CurrentWeather() {
         <Text style={styles.currentWeatherText}>Sunny</Text>
       </View>
       <Text style={styles.temperature}>22°C</Text>
-      <Text style={styles.location}>Bjelašnica</Text>
+      <Text style={styles.location}>{props.name}</Text>
     </View>
   );
 }

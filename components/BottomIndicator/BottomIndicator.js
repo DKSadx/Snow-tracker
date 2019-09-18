@@ -1,17 +1,27 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function BottomIndicator() {
-  return (
-    <View style={styles.bottomIndicator}>
+export default function BottomIndicator(props) {
+  const { navigate } = props.navigation;
+  return props.direction === 'forward' ? (
+    <TouchableOpacity style={styles.bottomIndicator} onPress={() => navigate('RightScreen')}>
       <View>
-        <Text style={styles.bottomText}>Jahorina</Text>
+        <Text style={styles.bottomText}>{props.name}</Text>
       </View>
       <View style={styles.bottomIcon}>
-        <Ionicons color="#fff" size={20} name="ios-arrow-round-forward" />
+        <Ionicons color="#fff" size={20} name={`ios-arrow-round-${props.direction}`} />
       </View>
-    </View>
+    </TouchableOpacity>
+  ) : (
+    <TouchableOpacity style={styles.bottomIndicator} onPress={() => navigate('MainScreen')}>
+      <View style={styles.bottomIcon}>
+        <Ionicons color="#fff" size={20} name={`ios-arrow-round-${props.direction}`} />
+      </View>
+      <View>
+        <Text style={styles.bottomText}>{props.name}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
@@ -25,6 +35,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 15,
     fontFamily: 'Dosis',
+    paddingLeft: '5%',
   },
   bottomIcon: {
     paddingLeft: '5%',

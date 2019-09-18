@@ -10,13 +10,13 @@ import BottomIndicator from '../components/BottomIndicator/BottomIndicator';
 export default function MainScreen(props) {
   const { navigate } = props.navigation;
   return (
-    <GestureRecognizer onSwipeLeft={() => navigate('RightScreen')}>
-      <ImageBackground source={require('../assets/images/1.jpg')} style={styles.imageBackground}>
+    <GestureRecognizer onSwipeRight={() => navigate('MainScreen')}>
+      <ImageBackground source={require('../assets/images/3.jpg')} style={styles.imageBackground}>
         <View style={styles.mainScreen}>
-          <Header name="Bjelašnica" />
-          <CurrentWeather name="Bjelašnica" />
+          <Header name="Jahorina" />
+          <CurrentWeather name="Jahorina" />
           <DailyWeather />
-          <BottomIndicator name="Jahorina" direction="forward" navigation={props.navigation} />
+          <BottomIndicator name="Bjelašnica" direction="back" navigation={props.navigation} />
         </View>
       </ImageBackground>
     </GestureRecognizer>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
-export default function CurrentWeather() {
+export default function CurrentWeather(props) {
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
@@ -11,7 +11,7 @@ export default function CurrentWeather() {
             <Entypo color="white" size={30} name="menu" />
           </TouchableOpacity>
         </View>
-        <Text style={styles.headerText}>Bjelašnica</Text>
+        <Text style={styles.headerText}>{props.name}</Text>
         <View style={styles.menuIcon}>
           <TouchableOpacity>
             <Entypo color="white" size={25} name="ccw" />
