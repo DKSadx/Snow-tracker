@@ -5,6 +5,7 @@ import { DrawerActions } from 'react-navigation-drawer';
 
 export default function Drawer(props) {
   const { navigate, state } = props.navigation;
+
   return (
     <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
       <ImageBackground source={require('../assets/images/4.jpg')} style={styles.imageBackground}>
