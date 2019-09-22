@@ -1,188 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { BackHandler } from 'react-native';
+import moment from 'moment';
 
 import Modal from '../../components/Modal/Modal';
+import CustomImage from '../../components/CustomImage/CustomImage';
 
-export default function DailyWeather() {
+export default function DailyWeather(props) {
   const [displayModal, setDisplayModal] = useState(false);
-
+  const { data } = props;
+  const generateDailyContainers = data.daily.data.map((day, i) => {
+    const { time, icon } = day;
+    const temperatureMin = Math.round(day.temperatureMin);
+    const temperatureMax = Math.round(day.temperatureMax);
+    const averageTemperature = Math.round((temperatureMin + temperatureMax) / 2);
+    const date = moment.unix(time).format('DD.MM.');
+    return (
+      <TouchableOpacity key={i} onPress={() => setDisplayModal(true)}>
+        <View style={styles.dailyView}>
+          <View style={styles.dateView}>
+            <Text style={styles.date}>{date}</Text>
+          </View>
+          <View style={styles.weatherIcon}>
+            <CustomImage icon={icon} styles={{ width: 60, height: 60, tintColor: '#fff' }} />
+          </View>
+          <View style={styles.dailyTemp}>
+            <Text style={styles.dailyTempText}>{averageTemperature}°C</Text>
+          </View>
+          <View style={styles.dailyLimits}>
+            <Text style={styles.dailyMax}>
+              max: <Text style={styles.textBold}>{temperatureMax}°C</Text>
+            </Text>
+            <Text style={styles.dailyMin}>
+              min: <Text style={styles.textBold}>{temperatureMin}°C</Text>
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  });
   const closeModal = () => setDisplayModal(false);
 
   return (
     <>
       {displayModal && <Modal closeModal={closeModal} />}
       <View style={styles.dailyContainer}>
-        <ScrollView>
-          <TouchableOpacity onPress={() => setDisplayModal(true)}>
-            <View style={styles.dailyView}>
-              <View style={styles.dateView}>
-                <Text style={styles.date}>13.09</Text>
-              </View>
-              <View style={styles.weatherIcon}>
-                <Image
-                  source={require('../../assets/icons/png/Cloud-Fog.png')}
-                  style={{ width: 60, height: 60, tintColor: '#fff' }}
-                />
-              </View>
-              <View style={styles.dailyTemp}>
-                <Text style={styles.dailyTempText}>22°C</Text>
-              </View>
-              <View style={styles.dailyLimits}>
-                <Text style={styles.dailyMax}>
-                  max: <Text style={styles.textBold}>29°C</Text>
-                </Text>
-                <Text style={styles.dailyMin}>
-                  min: <Text style={styles.textBold}>15°C</Text>
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.dailyView}>
-              <View style={styles.dateView}>
-                <Text style={styles.date}>14.09</Text>
-              </View>
-              <View style={styles.weatherIcon}>
-                <Image
-                  source={require('../../assets/icons/png/Cloud-Drizzle-Sun.png')}
-                  style={{ width: 60, height: 60, tintColor: '#fff' }}
-                />
-              </View>
-              <View style={styles.dailyTemp}>
-                <Text style={styles.dailyTempText}>24°C</Text>
-              </View>
-              <View style={styles.dailyLimits}>
-                <Text style={styles.dailyMax}>
-                  max: <Text style={styles.textBold}>30°C</Text>
-                </Text>
-                <Text style={styles.dailyMin}>
-                  min: <Text style={styles.textBold}>19°C</Text>
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.dailyView}>
-              <View style={styles.dateView}>
-                <Text style={styles.date}>15.09</Text>
-              </View>
-              <View style={styles.weatherIcon}>
-                <Image
-                  source={require('../../assets/icons/png/Cloud-Rain-Sun-Alt.png')}
-                  style={{ width: 60, height: 60, tintColor: '#fff' }}
-                />
-              </View>
-              <View style={styles.dailyTemp}>
-                <Text style={styles.dailyTempText}>20°C</Text>
-              </View>
-              <View style={styles.dailyLimits}>
-                <Text style={styles.dailyMax}>
-                  max: <Text style={styles.textBold}>26°C</Text>
-                </Text>
-                <Text style={styles.dailyMin}>
-                  min: <Text style={styles.textBold}>13°C</Text>
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.dailyView}>
-              <View style={styles.dateView}>
-                <Text style={styles.date}>16.09</Text>
-              </View>
-              <View style={styles.weatherIcon}>
-                <Image
-                  source={require('../../assets/icons/png/Cloud-Sun.png')}
-                  style={{ width: 60, height: 60, tintColor: '#fff' }}
-                />
-              </View>
-              <View style={styles.dailyTemp}>
-                <Text style={styles.dailyTempText}>22°C</Text>
-              </View>
-              <View style={styles.dailyLimits}>
-                <Text style={styles.dailyMax}>
-                  max: <Text style={styles.textBold}>28°C</Text>
-                </Text>
-                <Text style={styles.dailyMin}>
-                  min: <Text style={styles.textBold}>16°C</Text>
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.dailyView}>
-              <View style={styles.dateView}>
-                <Text style={styles.date}>17.09</Text>
-              </View>
-              <View style={styles.weatherIcon}>
-                <Image
-                  source={require('../../assets/icons/png/Cloud-Sun.png')}
-                  style={{ width: 60, height: 60, tintColor: '#fff' }}
-                />
-              </View>
-              <View style={styles.dailyTemp}>
-                <Text style={styles.dailyTempText}>21°C</Text>
-              </View>
-              <View style={styles.dailyLimits}>
-                <Text style={styles.dailyMax}>
-                  max: <Text style={styles.textBold}>29°C</Text>
-                </Text>
-                <Text style={styles.dailyMin}>
-                  min: <Text style={styles.textBold}>15°C</Text>
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.dailyView}>
-              <View style={styles.dateView}>
-                <Text style={styles.date}>18.09</Text>
-              </View>
-              <View style={styles.weatherIcon}>
-                <Image
-                  source={require('../../assets/icons/png/Sun.png')}
-                  style={{ width: 60, height: 60, tintColor: '#fff' }}
-                />
-              </View>
-              <View style={styles.dailyTemp}>
-                <Text style={styles.dailyTempText}>19°C</Text>
-              </View>
-              <View style={styles.dailyLimits}>
-                <Text style={styles.dailyMax}>
-                  max: <Text style={styles.textBold}>25°C</Text>
-                </Text>
-                <Text style={styles.dailyMin}>
-                  min: <Text style={styles.textBold}>11°C</Text>
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.dailyView}>
-              <View style={styles.dateView}>
-                <Text style={styles.date}>19.09</Text>
-              </View>
-              <View style={styles.weatherIcon}>
-                <Image
-                  source={require('../../assets/icons/png/Cloud.png')}
-                  style={{ width: 60, height: 60, tintColor: '#fff' }}
-                />
-              </View>
-              <View style={styles.dailyTemp}>
-                <Text style={styles.dailyTempText}>21°C</Text>
-              </View>
-              <View style={styles.dailyLimits}>
-                <Text style={styles.dailyMax}>
-                  max: <Text style={styles.textBold}>28°C</Text>
-                </Text>
-                <Text style={styles.dailyMin}>
-                  min: <Text style={styles.textBold}>15°C</Text>
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
+        <ScrollView>{data && generateDailyContainers}</ScrollView>
       </View>
     </>
   );

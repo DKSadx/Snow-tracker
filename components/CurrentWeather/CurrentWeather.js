@@ -1,17 +1,17 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 
+import CustomImage from '../CustomImage/CustomImage';
+
 export default function CurrentWeather(props) {
+  const { summary, temperature, icon } = props.data.currently;
   return (
     <View style={styles.currentWeather}>
       <View style={styles.weatherType}>
-        <Image
-          source={require('../../assets/icons/png/Sun.png')}
-          style={{ width: 25, height: 25, tintColor: '#fff' }}
-        />
-        <Text style={styles.currentWeatherText}>Sunny</Text>
+        <CustomImage icon={icon} styles={{ width: 30, height: 30, tintColor: '#fff' }} />
+        <Text style={styles.currentWeatherText}>{summary}</Text>
       </View>
-      <Text style={styles.temperature}>22°C</Text>
+      <Text style={styles.temperature}>{Math.round(temperature)}°C</Text>
       <Text style={styles.location}>{props.name}</Text>
     </View>
   );

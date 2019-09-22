@@ -23,5 +23,12 @@ export default function App() {
     }).then(() => setState({ ...state, fontLoading: false }));
   }, []);
 
+  // data.daily.forEach(x => console.log(x));
+  // data.daily.map(x => console.log(x));
+  // data.daily.data.forEach(x => console.log(moment.unix(x.time).format('MM/DD/YYYY')));
+  // moment.unix(x.time).format('MM/DD/YYYY'))
+  // const value = 1568779200;
+  // console.log(moment.unix(value).format('MM/DD/YYYY hh:mm:ss'));
+
   return !state.fontLoading && <DrawerNavigator />;
 }
