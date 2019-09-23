@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, ImageBackground, View, Text, Button } from 'react-native';
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import moment from 'moment';
 
 import Header from '../components/Header/Header';
@@ -12,16 +11,14 @@ import data from '../data/bjelasnica.json';
 export default function MainScreen(props) {
   const { navigate } = props.navigation;
   return (
-    <GestureRecognizer onSwipeLeft={() => navigate('RightScreen')}>
-      <ImageBackground source={require('../assets/images/1.jpg')} style={styles.imageBackground}>
-        <View style={styles.mainScreen}>
-          <Header name="Bjelašnica" navigation={props.navigation} />
-          <CurrentWeather name="Bjelašnica" data={data} />
-          <DailyWeather data={data} />
-          <BottomIndicator name="Jahorina" direction="forward" navigation={props.navigation} />
-        </View>
-      </ImageBackground>
-    </GestureRecognizer>
+    <ImageBackground source={require('../assets/images/1.jpg')} style={styles.imageBackground}>
+      <View style={styles.mainScreen}>
+        <Header name="Bjelašnica" navigation={props.navigation} />
+        <CurrentWeather name="Bjelašnica" data={data} />
+        <DailyWeather data={data} />
+        <BottomIndicator name="Jahorina" direction="forward" navigation={props.navigation} />
+      </View>
+    </ImageBackground>
   );
 }
 

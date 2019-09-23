@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Button, TouchableOpacity, BackHandler } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { AntDesign } from '@expo/vector-icons';
 import moment from 'moment';
@@ -8,6 +8,20 @@ import { calculateWindDirection } from '../../utils/functions';
 
 export default function Details(props) {
   const { navigate } = props.navigation;
+  // Physical android back button navigates to HourlyWeather component(previous one) instead of closing modal
+  const [backHandlerEvent] = useState({
+    cb: () => {
+      navigate('HourlyWeather');
+      return true;
+    },
+  });
+
+  useEffect(() => {
+    // Adds event listener on mount and removes on unmount
+    BackHandler.addEventListener('hardwareBackPress', backHandlerEvent.cb);
+    return () => BackHandler.removeEventListener('hardwareBackPress', backHandlerEvent.cb);
+  }, []);
+
   const { day } = props.screenProps;
   const { hourInfo } = props.navigation.state.params;
 

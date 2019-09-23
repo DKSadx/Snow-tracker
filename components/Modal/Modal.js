@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, View, StyleSheet } from 'react-native';
-import { BackHandler } from 'react-native';
+import { Animated, View, StyleSheet, BackHandler } from 'react-native';
 
 import ModalNavigator from '../../navigation/ModalNavigator';
 
@@ -25,7 +24,7 @@ export default function Modal(props) {
       duration: 300,
     }).start();
     // Overrides androids hardware back button so that it executes a custom action instead the native one
-    // Adds event listener and mount and removes on unmount
+    // Adds event listener on mount and removes on unmount
     BackHandler.addEventListener('hardwareBackPress', backHandlerEvent.cb);
     return () => BackHandler.removeEventListener('hardwareBackPress', backHandlerEvent.cb);
   }, []);
