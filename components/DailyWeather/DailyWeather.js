@@ -19,7 +19,7 @@ export default function DailyWeather(props) {
     const date = moment.unix(time).format('DD.MM.');
     const dateDay = moment.unix(time).format('DD');
     return (
-      <TouchableOpacity key={i} onPress={() => setModal({ show: true, dateDay })}>
+      <TouchableOpacity key={i} onPress={() => setModal({ show: true, dateDay, day })}>
         <View style={styles.dailyView}>
           <View style={styles.dateView}>
             <Text style={styles.date}>{date}</Text>
@@ -47,7 +47,9 @@ export default function DailyWeather(props) {
 
   return (
     <>
-      {modal.show && <Modal data={data} dateDay={modal.dateDay} closeModal={closeModal} />}
+      {modal.show && (
+        <Modal data={data} dateDay={modal.dateDay} day={modal.day} closeModal={closeModal} />
+      )}
       <View style={styles.dailyContainer}>
         <ScrollView>{data && generateDailyContainers}</ScrollView>
       </View>

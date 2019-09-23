@@ -10,7 +10,7 @@ import { calculateWindDirection } from '../../utils/functions';
 
 export default function HourlyWeather(props) {
   const { navigate } = props.navigation;
-  const { data, dateDay, closeModal } = props.screenProps;
+  const { data, dateDay, day, closeModal } = props.screenProps;
 
   const generateHourlyContainers = data.hourly.data.map((hour, i) => {
     const { icon } = hour;
@@ -21,7 +21,7 @@ export default function HourlyWeather(props) {
     const windSpeed = Math.round((hour.windSpeed / 1000) * 360000) / 100;
     if (day === dateDay) {
       return (
-        <TouchableOpacity key={i} onPress={() => navigate('Details')}>
+        <TouchableOpacity key={i} onPress={() => navigate('Details', { hourInfo: hour })}>
           <View style={styles.hourlyView}>
             <View style={styles.timeView}>
               <Text style={styles.time}>{time}</Text>
@@ -54,7 +54,7 @@ export default function HourlyWeather(props) {
                   style={{ width: 20, height: 20, tintColor: '#fff', paddingTop: 10 }}
                 />
                 <Text style={{ ...textStyles.bold, ...styles.windDirection }}>
-                  {` ${windDirection}km/h`}
+                  {` ${windDirection}`}
                 </Text>
               </View>
             </View>
@@ -77,6 +77,9 @@ export default function HourlyWeather(props) {
           <View style={styles.titleView}>
             <Text style={styles.title}>Hourly</Text>
           </View>
+        </View>
+        <View>
+          <Text style={styles.summary}>{day.summary}</Text>
         </View>
         <ScrollView>{data && generateHourlyContainers}</ScrollView>
       </View>
@@ -108,6 +111,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 24,
+  },
+  summary: {
+    color: '#fff',
+    textAlign: 'center',
+    paddingBottom: '5%',
+    paddingHorizontal: '6%',
   },
   hourlyView: {
     flex: 1,
@@ -147,7 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#fff',
   },
-  hourlyLimits: {
+  windContainer: {
     flex: 4,
   },
   windProperties: {
