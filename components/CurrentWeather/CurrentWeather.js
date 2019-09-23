@@ -2,9 +2,11 @@ import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 
 import CustomImage from '../CustomImage/CustomImage';
+import { getSummary } from '../../utils/functions';
 
 export default function CurrentWeather(props) {
-  const { summary, temperature, icon } = props.data.currently;
+  const { temperature, icon } = props.data.currently;
+  const summary = getSummary(icon);
   return (
     <View style={styles.currentWeather}>
       <View style={styles.weatherType}>

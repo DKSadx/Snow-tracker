@@ -5,45 +5,49 @@ import moment from 'moment';
 
 import Modal from '../../components/Modal/Modal';
 import CustomImage from '../../components/CustomImage/CustomImage';
+import { textStyles } from '../../utils/textStyles';
 
 export default function DailyWeather(props) {
-  const [displayModal, setDisplayModal] = useState(false);
+  const [modal, setModal] = useState({ show: false });
   const { data } = props;
+
   const generateDailyContainers = data.daily.data.map((day, i) => {
     const { time, icon } = day;
     const temperatureMin = Math.round(day.temperatureMin);
     const temperatureMax = Math.round(day.temperatureMax);
     const averageTemperature = Math.round((temperatureMin + temperatureMax) / 2);
     const date = moment.unix(time).format('DD.MM.');
+    const dateDay = moment.unix(time).format('DD');
     return (
-      <TouchableOpacity key={i} onPress={() => setDisplayModal(true)}>
+      <TouchableOpacity key={i} onPress={() => setModal({ show: true, dateDay })}>
         <View style={styles.dailyView}>
           <View style={styles.dateView}>
             <Text style={styles.date}>{date}</Text>
           </View>
           <View style={styles.weatherIcon}>
-            <CustomImage icon={icon} styles={{ width: 60, height: 60, tintColor: '#fff' }} />
+            <CustomImage icon={icon} styles={{ width: 38, height: 38, tintColor: '#fff' }} />
           </View>
           <View style={styles.dailyTemp}>
             <Text style={styles.dailyTempText}>{averageTemperature}°C</Text>
           </View>
           <View style={styles.dailyLimits}>
             <Text style={styles.dailyMax}>
-              max: <Text style={styles.textBold}>{temperatureMax}°C</Text>
+              max: <Text style={textStyles.bold}>{temperatureMax}°C</Text>
             </Text>
             <Text style={styles.dailyMin}>
-              min: <Text style={styles.textBold}>{temperatureMin}°C</Text>
+              min: <Text style={textStyles.bold}>{temperatureMin}°C</Text>
             </Text>
           </View>
         </View>
       </TouchableOpacity>
     );
   });
-  const closeModal = () => setDisplayModal(false);
+
+  const closeModal = () => setModal({ show: false });
 
   return (
     <>
-      {displayModal && <Modal closeModal={closeModal} />}
+      {modal.show && <Modal data={data} dateDay={modal.dateDay} closeModal={closeModal} />}
       <View style={styles.dailyContainer}>
         <ScrollView>{data && generateDailyContainers}</ScrollView>
       </View>
@@ -70,9 +74,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: 5,
+    overflow: 'hidden',
   },
   dateView: {
-    flex: 1,
+    flex: 0.8,
     paddingLeft: '4%',
   },
   date: {
@@ -80,12 +85,16 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   weatherIcon: {
-    flex: 2,
+    flex: 3,
     width: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    width: '100%',
   },
   dailyTemp: {
-    flex: 4,
-    paddingLeft: '10%',
+    flex: 3,
+    alignItems: 'flex-start',
   },
   dailyTempText: {
     fontSize: 25,
