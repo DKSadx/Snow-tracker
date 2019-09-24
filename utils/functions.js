@@ -49,7 +49,7 @@ export const getSummary = icon => {
 // North is 0 and progression is clockwise
 export const calculateWindDirection = degrees => {
   let direction = '';
-  if (degrees >= 350 && degrees < 10) direction = 'North';
+  if (degrees >= 350 || degrees < 10) direction = 'North';
   else if (degrees >= 10 && degrees < 80) direction = 'North-East';
   else if (degrees >= 80 && degrees < 100) direction = 'East';
   else if (degrees >= 100 && degrees < 170) direction = 'South-East';

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
 import moment from 'moment';
 import { Entypo } from '@expo/vector-icons';
 
 import CustomImage from '../../components/CustomImage/CustomImage';
 import { textStyles } from '../../utils/textStyles';
 import { calculateWindDirection } from '../../utils/functions';
+import { colors } from '../../utils/colors';
 
 export default function HourlyWeather(props) {
   const { navigate } = props.navigation;
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignSelf: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    backgroundColor: colors.modalBgColor,
     borderRadius: 5,
   },
   titleView: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   hourlyView: {
     flex: 1,
-    backgroundColor: 'rgba(5,102,141, 0.5)',
+    backgroundColor: colors.weatherComponent,
     height: 60,
     marginTop: '2%',
     marginHorizontal: '5%',

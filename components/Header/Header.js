@@ -3,18 +3,21 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { DrawerActions } from 'react-navigation-drawer';
 
+import { colors } from '../../utils/colors';
+
 export default function CurrentWeather(props) {
+  const { fetchData, navigation, name } = props;
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
         <View style={styles.menuIcon}>
-          <TouchableOpacity onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}>
+          <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
             <Entypo color="white" size={30} name="menu" />
           </TouchableOpacity>
         </View>
-        <Text style={styles.headerText}>{props.name}</Text>
+        <Text style={styles.headerText}>{name}</Text>
         <View style={styles.menuIcon}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => fetchData()}>
             <Entypo color="white" size={25} name="ccw" />
           </TouchableOpacity>
         </View>
@@ -27,7 +30,7 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     height: '10%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: colors.header,
   },
   headerContent: {
     flex: 1,

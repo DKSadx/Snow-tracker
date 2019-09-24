@@ -6,6 +6,7 @@ import moment from 'moment';
 import Modal from '../../components/Modal/Modal';
 import CustomImage from '../../components/CustomImage/CustomImage';
 import { textStyles } from '../../utils/textStyles';
+import { colors } from '../../utils/colors';
 
 export default function DailyWeather(props) {
   const [modal, setModal] = useState({ show: false });
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
   },
   dailyView: {
     flex: 1,
-    backgroundColor: 'rgba(5,102,141, 0.5)',
+    backgroundColor: colors.weatherComponent,
     height: 60,
     marginTop: '2%',
     marginHorizontal: '5%',

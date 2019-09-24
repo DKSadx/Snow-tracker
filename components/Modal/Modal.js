@@ -20,7 +20,7 @@ export default function Modal(props) {
   useEffect(() => {
     // Fade in animation when component mounts
     Animated.timing(fadeAnim, {
-      toValue: 0.9,
+      toValue: 1,
       duration: 300,
     }).start();
     // Overrides androids hardware back button so that it executes a custom action instead the native one
@@ -31,12 +31,20 @@ export default function Modal(props) {
 
   return (
     <Animated.View style={{ ...styles.container, opacity: fadeAnim }}>
+      {/* <View style={styles.hourlyContainer}> */}
       <ModalNavigator screenProps={{ data, dateDay, day, closeModal: backHandlerEvent.cb }} />
+      {/* </View> */}
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
+  // hourlyContainer: {
+  //   width: '100%',
+  //   height: '100%',
+  //   alignSelf: 'center',
+  //   borderRadius: 5,
+  // },
   container: {
     height: '82%',
     width: '90%',

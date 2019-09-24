@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
 import CustomImage from '../CustomImage/CustomImage';
 import { getSummary } from '../../utils/functions';
@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     fontSize: 20,
-    marginBottom: '15%',
     fontFamily: 'RobotoCondensed',
   },
 });

@@ -11,10 +11,8 @@ const ModalNavigator = createStackNavigator(
     Details: { screen: Details },
   },
   {
+    transparentCard: true,
     transitionConfig: () => zoomIn(300),
-    cardStyle: {
-      backgroundColor: '#151E3F',
-    },
   },
 );
 
