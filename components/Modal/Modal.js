@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, View, StyleSheet, BackHandler } from 'react-native';
+import { Animated, StyleSheet, BackHandler } from 'react-native';
 
 import ModalNavigator from '../../navigation/ModalNavigator';
 
@@ -31,20 +31,12 @@ export default function Modal(props) {
 
   return (
     <Animated.View style={{ ...styles.container, opacity: fadeAnim }}>
-      {/* <View style={styles.hourlyContainer}> */}
       <ModalNavigator screenProps={{ data, dateDay, day, closeModal: backHandlerEvent.cb }} />
-      {/* </View> */}
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
-  // hourlyContainer: {
-  //   width: '100%',
-  //   height: '100%',
-  //   alignSelf: 'center',
-  //   borderRadius: 5,
-  // },
   container: {
     height: '82%',
     width: '90%',
