@@ -1,17 +1,24 @@
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import { fromRight } from 'react-navigation-transitions';
+import { createDrawerNavigator, DrawerActions } from 'react-navigation-drawer';
 
-import MainScreen from '../screens/MainScreen';
 import RightScreen from '../screens/RightScreen';
+import DrawerNavigator from './DrawerNavigator';
 
-const MainNavigator = createStackNavigator(
+const MainNavigator = createDrawerNavigator(
   {
-    MainScreen: { screen: MainScreen },
-    RightScreen: { screen: RightScreen },
+    MainScreen: DrawerNavigator,
   },
   {
-    transitionConfig: () => fromRight(300),
+    getCustomActionCreators: () => {
+      return {
+        toggleRightDrawer: () => DrawerActions.toggleDrawer(),
+      };
+    },
+    drawerType: 'slide',
+    drawerPosition: 'right',
+    drawerWidth: '100%',
+    edgeWidth: 300,
+    contentComponent: RightScreen,
   },
 );
 

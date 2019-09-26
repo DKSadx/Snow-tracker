@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as Font from 'expo-font';
 
-import DrawerNavigator from './navigation/DrawerNavigator';
+// import DrawerNavigator from './navigation/DrawerNavigator';
+import MainNavigator from './navigation/MainNavigator';
 
 export default function App() {
   const [apiState, setApiState] = useState({
@@ -35,7 +36,7 @@ export default function App() {
   const { bjelasnicaData, jahorinaData } = apiState;
   return (
     !fontState.fontLoading && (
-      <DrawerNavigator screenProps={{ bjelasnicaData, jahorinaData, fetchData }} />
+      <MainNavigator screenProps={{ bjelasnicaData, jahorinaData, fetchData }} />
     )
   );
 }

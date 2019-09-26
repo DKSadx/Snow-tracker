@@ -48,12 +48,12 @@ export default function DailyWeather(props) {
 
   return (
     <>
-      {modal.show && (
-        <Modal data={data} dateDay={modal.dateDay} day={modal.day} closeModal={closeModal} />
-      )}
       <View style={styles.dailyContainer}>
         <ScrollView>{data && generateDailyContainers}</ScrollView>
       </View>
+      {modal.show && (
+        <Modal data={data} dateDay={modal.dateDay} day={modal.day} closeModal={closeModal} />
+      )}
     </>
   );
 }

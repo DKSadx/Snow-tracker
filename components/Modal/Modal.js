@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '15%',
     alignSelf: 'center',
-    zIndex: 10,
     borderRadius: 10,
     overflow: 'hidden',
   },

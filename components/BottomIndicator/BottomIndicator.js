@@ -1,41 +1,47 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
 export default function BottomIndicator(props) {
-  const { navigate } = props.navigation;
+  const { toggleRightDrawer } = props.navigation;
+  const { direction, name } = props;
   return props.direction === 'forward' ? (
-    <GestureRecognizer onSwipeLeft={() => navigate('RightScreen')}>
-      <TouchableOpacity style={styles.bottomIndicator} onPress={() => navigate('RightScreen')}>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.bottomIndicator} onPress={() => toggleRightDrawer()}>
         <View>
-          <Text style={styles.bottomText}>{props.name}</Text>
+          <Text style={styles.bottomText}>{`${name}  `}</Text>
         </View>
         <View style={styles.bottomIcon}>
-          <Ionicons color="#fff" size={20} name={`ios-arrow-round-${props.direction}`} />
+          <Ionicons color="#fff" size={20} name={`ios-arrow-round-${direction}`} />
         </View>
       </TouchableOpacity>
-    </GestureRecognizer>
+    </View>
   ) : (
-    <GestureRecognizer onSwipeRight={() => navigate('MainScreen')}>
-      <TouchableOpacity style={styles.bottomIndicator} onPress={() => navigate('MainScreen')}>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.bottomIndicator} onPress={() => toggleRightDrawer()}>
         <View style={styles.bottomIcon}>
-          <Ionicons color="#fff" size={20} name={`ios-arrow-round-${props.direction}`} />
+          <Ionicons color="#fff" size={20} name={`ios-arrow-round-${direction}`} />
         </View>
         <View>
-          <Text style={styles.bottomText}>{props.name}</Text>
+          <Text style={styles.bottomText}>{name}</Text>
         </View>
       </TouchableOpacity>
-    </GestureRecognizer>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    bottom: '2.5%',
+    alignSelf: 'center',
+  },
   bottomIndicator: {
     flexDirection: 'row',
     justifyContent: 'center',
     paddingTop: '8%',
-    height: '35%',
+    height: '100%',
+    width: '100%',
   },
   bottomText: {
     color: '#fff',

@@ -6,12 +6,13 @@ import { DrawerActions } from 'react-navigation-drawer';
 import { colors } from '../../utils/colors';
 
 export default function CurrentWeather(props) {
-  const { fetchData, navigation, name } = props;
+  const { fetchData, name } = props;
+  const { toggleLeftDrawer } = props.navigation;
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
         <View style={styles.menuIcon}>
-          <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+          <TouchableOpacity onPress={() => toggleLeftDrawer()}>
             <Entypo color="white" size={30} name="menu" />
           </TouchableOpacity>
         </View>

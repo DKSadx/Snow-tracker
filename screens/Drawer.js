@@ -6,8 +6,7 @@ import About from './Modals/About';
 
 export default function Drawer(props) {
   const [modal, toggleModal] = useState({ isOpen: false, type: null });
-  const { navigate } = props.navigation;
-
+  const { navigate, toggleRightDrawer, toggleDrawer } = props.navigation;
   const closeModal = () => toggleModal({ isOpen: false });
 
   return (
@@ -17,10 +16,22 @@ export default function Drawer(props) {
           <View style={styles.title}>
             <Text style={styles.titleText}>Mountains:</Text>
           </View>
-          <TouchableOpacity style={styles.option} onPress={() => navigate('MainScreen')}>
+          <TouchableOpacity
+            style={styles.option}
+            onPress={() => {
+              toggleDrawer(); // Toggles left drawer
+              toggleRightDrawer(); // Toggles right drawer
+            }}
+          >
             <Text style={styles.optionText}>Bjelašnica</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.option} onPress={() => navigate('RightScreen')}>
+          <TouchableOpacity
+            style={styles.option}
+            onPress={() => {
+              toggleDrawer(); // Toggles left drawer
+              toggleRightDrawer(); // Toggles right drawer
+            }}
+          >
             <Text style={styles.optionText}>Jahorina</Text>
           </TouchableOpacity>
           <TouchableOpacity

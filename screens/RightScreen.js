@@ -20,8 +20,8 @@ export default function MainScreen(props) {
           <Header name="Jahorina" navigation={navigation} fetchData={fetchData} />
           <CurrentWeather name="Jahorina" data={data} />
           <SkiConditions />
-          <DailyWeather data={data} />
           <BottomIndicator name="Bjelašnica" direction="back" navigation={navigation} />
+          <DailyWeather data={data} />
         </View>
       ) : (
         <Spinner containerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} />
