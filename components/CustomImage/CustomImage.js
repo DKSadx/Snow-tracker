@@ -53,5 +53,5 @@ export default function CustomImage(props) {
     default:
       return;
   }
-  return <>{iconPath && <Image style={{ ...props.styles }} source={iconPath} />}</>;
+  return <>{iconPath && <Image style={{ ...styles }} source={iconPath} />}</>;
 }
