@@ -4,7 +4,7 @@ import { Animated, StyleSheet, BackHandler } from 'react-native';
 import ModalNavigator from '../../navigation/ModalNavigator';
 
 export default function Modal(props) {
-  const { data, dateDay, day, closeModal } = props;
+  const { data, dateDay, day } = props;
   const [fadeAnim] = useState(new Animated.Value(0)); // Sets initial value for opacity to 0
   const [backHandlerEvent] = useState({
     cb: () => {

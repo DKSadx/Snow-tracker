@@ -1,24 +1,15 @@
 import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator, DrawerActions } from 'react-navigation-drawer';
 
-import RightScreen from '../screens/RightScreen';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+
 import DrawerNavigator from './DrawerNavigator';
 
-const MainNavigator = createDrawerNavigator(
+const MainNavigator = createMaterialTopTabNavigator(
   {
     MainScreen: DrawerNavigator,
   },
   {
-    getCustomActionCreators: () => {
-      return {
-        toggleRightDrawer: () => DrawerActions.toggleDrawer(),
-      };
-    },
-    drawerType: 'slide',
-    drawerPosition: 'right',
-    drawerWidth: '100%',
-    edgeWidth: 300,
-    contentComponent: RightScreen,
+    tabBarComponent: null,
   },
 );
 

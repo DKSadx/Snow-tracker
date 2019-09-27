@@ -3,30 +3,26 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function BottomIndicator(props) {
-  const { toggleRightDrawer } = props.navigation;
-  const { direction, name } = props;
+  const { navigate } = props.navigation;
+  const { name, direction } = props;
   return props.direction === 'forward' ? (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.bottomIndicator} onPress={() => toggleRightDrawer()}>
-        <View>
-          <Text style={styles.bottomText}>{`${name}  `}</Text>
-        </View>
-        <View style={styles.bottomIcon}>
-          <Ionicons color="#fff" size={20} name={`ios-arrow-round-${direction}`} />
-        </View>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={styles.bottomIndicator} onPress={() => navigate('RightScreen')}>
+      <View>
+        <Text style={styles.bottomText}>{name}</Text>
+      </View>
+      <View style={styles.bottomIcon}>
+        <Ionicons color="#fff" size={20} name={`ios-arrow-round-${direction}`} />
+      </View>
+    </TouchableOpacity>
   ) : (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.bottomIndicator} onPress={() => toggleRightDrawer()}>
-        <View style={styles.bottomIcon}>
-          <Ionicons color="#fff" size={20} name={`ios-arrow-round-${direction}`} />
-        </View>
-        <View>
-          <Text style={styles.bottomText}>{name}</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={styles.bottomIndicator} onPress={() => navigate('MainScreen')}>
+      <View style={styles.bottomIcon}>
+        <Ionicons color="#fff" size={20} name={`ios-arrow-round-${direction}`} />
+      </View>
+      <View>
+        <Text style={styles.bottomText}>{name}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 

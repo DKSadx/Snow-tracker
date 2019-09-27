@@ -81,7 +81,7 @@ export default function HourlyWeather(props) {
         <View>
           <Text style={styles.summary}>{day.summary}</Text>
         </View>
-        <ScrollView>{data && generateHourlyContainers}</ScrollView>
+        <ScrollView style={{ marginBottom: '5%' }}>{data && generateHourlyContainers}</ScrollView>
       </View>
     </>
   );
