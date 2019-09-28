@@ -27,9 +27,9 @@ export default function App() {
       'https://api.darksky.net/forecast/32b96641b564729e696d75a7b98afd2e/43.7042,18.2567?exclude=minutely,alerts,flags&units=si';
     const apiJahorina =
       'https://api.darksky.net/forecast/32b96641b564729e696d75a7b98afd2e/43.7202,18.5617?exclude=minutely,alerts,flags&units=si';
-    // const bjelasnicaData = await axios.get(apiBjelasnica);
-    // const jahorinaData = await axios.get(apiJahorina);
-    // setApiState({ bjelasnicaData: bjelasnicaData.data, jahorinaData: jahorinaData.data });
+    const bjelasnicaData = await axios.get(apiBjelasnica);
+    const jahorinaData = await axios.get(apiJahorina);
+    setApiState({ bjelasnicaData: bjelasnicaData.data, jahorinaData: jahorinaData.data });
   };
 
   const { bjelasnicaData, jahorinaData } = apiState;

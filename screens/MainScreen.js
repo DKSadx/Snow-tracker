@@ -7,10 +7,10 @@ import SkiConditions from '../components/SkiConditions/SkiConditions';
 import DailyWeather from '../components/DailyWeather/DailyWeather';
 import BottomIndicator from '../components/BottomIndicator/BottomIndicator';
 import Spinner from '../components/Spinner/Spinner';
-import data from '../data/bjelasnica.json';
+// import data from '../data/bjelasnica.json';
 
 export default function MainScreen(props) {
-  // const data = props.screenProps.bjelasnicaData;
+  const data = props.screenProps.bjelasnicaData;
   const { fetchData } = props.screenProps;
   const { navigation } = props;
   return (

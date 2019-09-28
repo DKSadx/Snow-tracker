@@ -1,18 +1,29 @@
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import { fromRight } from 'react-navigation-transitions';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import Drawer from '../screens/Drawer';
 
 import MainScreen from '../screens/MainScreen';
 import RightScreen from '../screens/RightScreen';
 
-const MainNavigator = createStackNavigator(
+const MainNavigator = createMaterialTopTabNavigator(
   {
     MainScreen: { screen: MainScreen },
     RightScreen: { screen: RightScreen },
   },
   {
-    transitionConfig: () => fromRight(300),
+    tabBarComponent: null,
   },
 );
 
-export default createAppContainer(MainNavigator);
+const DrawerNavigator = createDrawerNavigator(
+  {
+    MainNavigator,
+  },
+  {
+    drawerWidth: '60%',
+    contentComponent: Drawer,
+  },
+);
+
+export default createAppContainer(DrawerNavigator);
