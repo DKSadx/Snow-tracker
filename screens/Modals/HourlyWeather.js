@@ -81,7 +81,19 @@ export default function HourlyWeather(props) {
         <View>
           <Text style={styles.summary}>{day.summary}</Text>
         </View>
-        <ScrollView>{data && generateHourlyContainers}</ScrollView>
+        <ScrollView>
+          {data &&
+            // If data for that day doesn't exist (map returns undefined for all elements) display message else display data
+            (generateHourlyContainers.filter(hourData => hourData !== undefined).length === 0 ? (
+              <View style={styles.noHourlyData}>
+                <Text style={styles.noHourlyDataText}>
+                  Hourly weather is only available for first 48h.
+                </Text>
+              </View>
+            ) : (
+              generateHourlyContainers
+            ))}
+        </ScrollView>
       </View>
     </>
   );
@@ -117,6 +129,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: '5%',
     paddingHorizontal: '6%',
+  },
+  noHourlyData: {
+    flex: 1,
+    height: 300,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: '10%',
+  },
+  noHourlyDataText: {
+    color: 'white',
+    fontSize: 12,
   },
   hourlyView: {
     flex: 1,
