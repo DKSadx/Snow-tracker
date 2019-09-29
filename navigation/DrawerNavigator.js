@@ -1,12 +1,24 @@
 import { createAppContainer } from 'react-navigation';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-
 import Drawer from '../screens/Drawer';
-import MainNavigator from './MainNavigator';
+
+import MainScreen from '../screens/MainScreen';
+import RightScreen from '../screens/RightScreen';
+
+const MainNavigator = createMaterialTopTabNavigator(
+  {
+    MainScreen: { screen: MainScreen },
+    RightScreen: { screen: RightScreen },
+  },
+  {
+    tabBarComponent: null,
+  },
+);
 
 const DrawerNavigator = createDrawerNavigator(
   {
-    Main: MainNavigator,
+    MainNavigator,
   },
   {
     drawerWidth: '60%',
