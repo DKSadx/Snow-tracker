@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, View, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
-import { BackHandler } from 'react-native';
 import moment from 'moment';
 
 import Modal from '../../components/Modal/Modal';

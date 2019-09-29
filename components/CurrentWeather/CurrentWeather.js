@@ -6,6 +6,7 @@ import { getSummary } from '../../utils/functions';
 
 export default function CurrentWeather(props) {
   const { temperature, icon } = props.data.currently;
+  const { name } = props;
   const summary = getSummary(icon);
   return (
     <View style={styles.currentWeather}>
@@ -14,7 +15,7 @@ export default function CurrentWeather(props) {
         <Text style={styles.currentWeatherText}>{summary}</Text>
       </View>
       <Text style={styles.temperature}>{Math.round(temperature)}°C</Text>
-      <Text style={styles.location}>{props.name}</Text>
+      <Text style={styles.location}>{name}</Text>
     </View>
   );
 }

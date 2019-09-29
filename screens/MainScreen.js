@@ -19,7 +19,7 @@ export default function MainScreen(props) {
         <View style={styles.mainScreen}>
           <Header name="Bjelašnica" navigation={navigation} fetchData={fetchData} />
           <CurrentWeather name="Bjelašnica" data={data} />
-          <SkiConditions />
+          <SkiConditions data={data} />
           <DailyWeather data={data} />
           <BottomIndicator name="Jahorina" direction="forward" navigation={navigation} />
         </View>
