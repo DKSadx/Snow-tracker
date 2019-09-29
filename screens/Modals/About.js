@@ -34,9 +34,15 @@ export default function About(props) {
         </View>
         <View style={styles.about}>
           <Text style={styles.aboutText}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est iste cum velit laboriosam
-            alias quibusdam soluta nam nemo doloremque, consequatur nisi. Fuga, perferendis
-            dignissimos? Sunt veniam alias rerum est aut.
+            <Text>
+              This is mainly a personal project made for tracking weather and ski conditions for two
+              biggest ski resorts in Bosnia and Herzegovina.{'\n'}
+            </Text>
+            <Text>
+              App is under the GPL version 3 license. You can use, change or share it for free but
+              it must be kept under the same license.{'\n\n'}
+            </Text>
+            <Text>by Darko Kojovic, github: @DKSadx</Text>
           </Text>
         </View>
         <TouchableOpacity onPress={() => backHandlerEvent.cb()} style={styles.closeBtn}>
@@ -70,6 +76,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#fff',
     borderBottomWidth: 2,
     marginTop: '3%',
+    marginBottom: '3%',
     alignItems: 'center',
     justifyContent: 'center',
     width: '50%',
@@ -80,7 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   about: {
-    flex: 3,
+    flex: 3.5,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: '5%',
