@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 
+import Maps from './Modals/Maps';
 import Help from './Modals/Help';
 import About from './Modals/About';
 
@@ -15,13 +16,21 @@ export default function Drawer(props) {
       <View style={styles.container}>
         <ImageBackground source={require('../assets/images/4.jpg')} style={styles.imageBackground}>
           <View style={styles.title}>
-            <Text style={styles.titleText}>Mountains:</Text>
+            <Text style={styles.titleText}>Menu</Text>
           </View>
           <TouchableOpacity style={styles.option} onPress={() => navigate('MainScreen')}>
             <Text style={styles.optionText}>Bjelašnica</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.option} onPress={() => navigate('RightScreen')}>
             <Text style={styles.optionText}>Jahorina</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.option}
+            onPress={() => {
+              toggleModal({ isOpen: true, type: 'Maps' });
+            }}
+          >
+            <Text style={styles.optionText}>Maps</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.option}
@@ -42,7 +51,13 @@ export default function Drawer(props) {
         </ImageBackground>
       </View>
       {modal.isOpen === true &&
-        (modal.type === 'Help' ? <Help close={closeModal} /> : <About close={closeModal} />)}
+        (modal.type === 'Help' ? (
+          <Help close={closeModal} />
+        ) : modal.type === 'Maps' ? (
+          <Maps close={closeModal} />
+        ) : (
+          <About close={closeModal} />
+        ))}
     </>
   );
 }
@@ -63,8 +78,8 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: '#fff',
-    paddingLeft: '10%',
     fontSize: 25,
+    textAlign: 'center',
   },
   option: {
     marginVertical: '10%',
@@ -72,7 +87,7 @@ const styles = StyleSheet.create({
   },
   optionText: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'RobotoCondensed',
   },
 });

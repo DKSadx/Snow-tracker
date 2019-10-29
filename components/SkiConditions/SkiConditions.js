@@ -11,10 +11,10 @@ export default function SkiConditions(props) {
   let skiConditions;
   let color;
   // Calculates score depending on the current weather conditions
-  if (temperature > 5 || windSpeed > 8 || (icon === 'rain' && precipIntensity > 5)) {
+  if (temperature > 1 || windSpeed > 10 || (icon === 'rain' && precipIntensity > 5)) {
     score = 0;
   } else {
-    if (temperature < 0 && temperature > -12) score = score + 2;
+    if (temperature < -4 && temperature > -12) score = score + 2;
     else score = score + 1;
     if (windSpeed < 4) score = score + 2;
     else score = score + 1;
