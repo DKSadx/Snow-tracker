@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Weather",
-    "slug": "weatherApp",
+    "name": "Snow tracker",
+    "slug": "snowTracker",
     "privacy": "unlisted",
     "sdkVersion": "34.0.0",
     "platforms": ["ios", "android", "web"],
