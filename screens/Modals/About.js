@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
   },
   container: {
     height: '35%',
-    width: '140%',
+    width: '85%',
     backgroundColor: colors.infoModal,
     position: 'relative',
-    left: '13.33%',
+    alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: 10,
   },

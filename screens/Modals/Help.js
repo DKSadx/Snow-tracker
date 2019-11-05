@@ -134,11 +134,11 @@ const styles = StyleSheet.create({
   },
   container: {
     height: '90%',
-    width: '140%',
+    width: '85%',
     backgroundColor: colors.infoModal,
     position: 'relative',
     top: '2%',
-    left: '13.33%',
+    alignSelf: 'center',
     borderRadius: 10,
   },
   titleView: {

@@ -108,33 +108,37 @@ export default function Maps(props) {
 
   return (
     <Animated.View style={{ ...styles.overlay, opacity: fadeAnim }}>
-      <View style={styles.container}>
-        <View style={styles.titleView}>
-          <Text style={styles.title}>Choose map</Text>
-        </View>
-        <View>
-          <TouchableOpacity onPress={() => setMapState({ showMap: true, mapType: 'bjelasnica' })}>
-            <Image
-              style={styles.mapImage}
-              resizeMode="contain"
-              source={require('../../assets/images/bjel-map.jpg')}
-            />
-            <Text style={styles.mapName}>Bjelašnica</Text>
+      {/* Displays map modal or menu(map picker) */}
+      {mapState.showMap ? (
+        map
+      ) : (
+        <View style={styles.container}>
+          <View style={styles.titleView}>
+            <Text style={styles.title}>Choose map</Text>
+          </View>
+          <View>
+            <TouchableOpacity onPress={() => setMapState({ showMap: true, mapType: 'bjelasnica' })}>
+              <Image
+                style={styles.mapImage}
+                resizeMode="contain"
+                source={require('../../assets/images/bjel-map.jpg')}
+              />
+              <Text style={styles.mapName}>Bjelašnica</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setMapState({ showMap: true, mapType: 'jahorina' })}>
+              <Image
+                style={styles.mapImage}
+                resizeMode="contain"
+                source={require('../../assets/images/jah-map.jpg')}
+              />
+              <Text style={styles.mapName}>Jahorina</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity onPress={() => backHandlerEvent.cb()} style={styles.closeBtn}>
+            <Text style={styles.closeBtnText}>close</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setMapState({ showMap: true, mapType: 'jahorina' })}>
-            <Image
-              style={styles.mapImage}
-              resizeMode="contain"
-              source={require('../../assets/images/jah-map.jpg')}
-            />
-            <Text style={styles.mapName}>Jahorina</Text>
-          </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={() => backHandlerEvent.cb()} style={styles.closeBtn}>
-          <Text style={styles.closeBtnText}>close</Text>
-        </TouchableOpacity>
-      </View>
-      {mapState.showMap && map}
+      )}
     </Animated.View>
   );
 }
@@ -150,10 +154,10 @@ const styles = StyleSheet.create({
   },
   container: {
     height: '70%',
-    width: '140%',
+    width: '85%',
     backgroundColor: colors.infoModal,
     position: 'relative',
-    left: '13.33%',
+    alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: 10,
   },

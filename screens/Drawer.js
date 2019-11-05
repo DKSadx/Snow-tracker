@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 
 import Maps from './Modals/Maps';
 import Help from './Modals/Help';
@@ -70,7 +77,7 @@ const styles = StyleSheet.create({
   },
   imageBackground: {
     height: '100%',
-    width: '100%',
+    width: Math.round(Dimensions.get('window').width) * 0.6,
   },
   title: {
     height: '40%',

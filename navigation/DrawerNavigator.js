@@ -21,8 +21,9 @@ const DrawerNavigator = createDrawerNavigator(
     MainNavigator,
   },
   {
-    drawerWidth: '60%',
+    drawerWidth: '100%',
     contentComponent: Drawer,
+    drawerBackgroundColor: '#0000',
   },
 );
 
