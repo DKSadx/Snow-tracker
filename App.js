@@ -24,18 +24,30 @@ export default function App() {
 
   const fetchData = async () => {
     const apiBjelasnica =
-      'https://api.darksky.net/forecast/32b96641b564729e696d75a7b98afd2e/43.7042,18.2567?exclude=minutely,alerts,flags&units=si';
+      'https://api.darksky.net/forecast/32b96641b564729e696d75a7b98afd2e/43.710600,18.269324?exclude=minutely,alerts,flags&units=si';
     const apiJahorina =
-      'https://api.darksky.net/forecast/32b96641b564729e696d75a7b98afd2e/43.7202,18.5617?exclude=minutely,alerts,flags&units=si';
+      'https://api.darksky.net/forecast/32b96641b564729e696d75a7b98afd2e/43.729012,18.564189?exclude=minutely,alerts,flags&units=si';
     const bjelasnicaData = await axios.get(apiBjelasnica);
     const jahorinaData = await axios.get(apiJahorina);
-    setApiState({ bjelasnicaData: bjelasnicaData.data, jahorinaData: jahorinaData.data });
+    setApiState({
+      bjelasnicaData: bjelasnicaData.data,
+      jahorinaData: jahorinaData.data,
+    });
+  };
+
+  const updateData = newData => {
+    setApiState({
+      ...apiState,
+      ...newData,
+    });
   };
 
   const { bjelasnicaData, jahorinaData } = apiState;
   return (
     !fontState.fontLoading && (
-      <DrawerNavigator screenProps={{ bjelasnicaData, jahorinaData, fetchData }} />
+      <DrawerNavigator
+        screenProps={{ bjelasnicaData, jahorinaData, fetchData, updateData }}
+      />
     )
   );
 }

@@ -6,18 +6,32 @@ export default function BottomIndicator(props) {
   const { navigate } = props.navigation;
   const { name, direction } = props;
   return direction === 'forward' ? (
-    <TouchableOpacity style={styles.bottomIndicator} onPress={() => navigate('RightScreen')}>
+    <TouchableOpacity
+      style={styles.bottomIndicator}
+      onPress={() => navigate('RightScreen')}
+    >
       <View>
         <Text style={styles.bottomText}>{name}</Text>
       </View>
       <View style={styles.bottomIcon}>
-        <Ionicons color="#fff" size={20} name={`ios-arrow-round-${direction}`} />
+        <Ionicons
+          color="#fff"
+          size={20}
+          name={`ios-arrow-round-${direction}`}
+        />
       </View>
     </TouchableOpacity>
   ) : (
-    <TouchableOpacity style={styles.bottomIndicator} onPress={() => navigate('MainScreen')}>
+    <TouchableOpacity
+      style={styles.bottomIndicator}
+      onPress={() => navigate('MainScreen')}
+    >
       <View style={styles.bottomIcon}>
-        <Ionicons color="#fff" size={20} name={`ios-arrow-round-${direction}`} />
+        <Ionicons
+          color="#fff"
+          size={20}
+          name={`ios-arrow-round-${direction}`}
+        />
       </View>
       <View>
         <Text style={styles.bottomText}>{name}</Text>
@@ -30,7 +44,7 @@ const styles = StyleSheet.create({
   bottomIndicator: {
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingTop: '8%',
+    paddingTop: '6%',
     height: '35%',
   },
   bottomText: {
